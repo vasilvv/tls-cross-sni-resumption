@@ -1,0 +1,7 @@
+<note title="Discussion Venues" removeInRFC="true">
+<t>Discussion of this document takes place on the
+  TLS Working Group mailing list (tls@ietf.org),
+  which is archived at <eref target="https://mailarchive.ietf.org/arch/browse/tls/">https://mailarchive.ietf.org/arch/browse/tls/</eref>.</t>
+<t>Source for this draft and an issue tracker can be found at
+  <eref target="https://github.com/vasilvv/tls-cross-sni-resumption">https://github.com/vasilvv/tls-cross-sni-resumption</eref>.</t>
+</note>
