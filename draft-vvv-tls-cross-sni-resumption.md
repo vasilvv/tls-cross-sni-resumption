@@ -133,10 +133,10 @@ ownership, or otherwise require a different operational domain.
 Session tickets can contain arbitrary information, and thus could be
 potentially used to re-identify a user from a previous connection.
 Cross-domain resumption expands the potential list of servers to which an
-individual ticket could be presented.  Mitigation of this potential privacy
-issue depends on the specifics of the application using TLS.  For the Web use
-case, network partition keys can be used to isolate individual session tickets
-[FETCH]; other use cases may adopt a similar approach.
+individual ticket could be presented.  Client applications should partition the
+session cache between connections that are meant to be uncorrelated.  For
+example, the Web use case uses network partition keys to separate cache lookups
+[FETCH].
 
 IANA Considerations
 ===================
