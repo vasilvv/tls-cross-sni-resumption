@@ -44,6 +44,12 @@ informative:
       ins: M. Fischer
       name: Mathias Fischer
     target: "https://arxiv.org/pdf/1902.02531.pdf"
+  FETCH:
+    target: https://fetch.spec.whatwg.org/
+    title: "Fetch Standard"
+    author:
+      org: WHATWG
+    date: Living Standard
 
 --- abstract
 
@@ -123,6 +129,14 @@ is the scope of the certificate, the wider is the impact of the key compromise
 for that certificate.  In addition, creating a certificate that is valid for
 multiple hostnames can lead to complications if some of those hostnames change
 ownership, or otherwise require a different operational domain.
+
+Session tickets can contain arbitrary information, and thus could be
+potentially used to re-identify a user from a previous connection.
+Cross-domain resumption expands the potential list of servers to which an
+individual ticket could be presented.  Client applications should partition the
+session cache between connections that are meant to be uncorrelated.  For
+example, the Web use case uses network partition keys to separate cache lookups
+[FETCH].
 
 IANA Considerations
 ===================
