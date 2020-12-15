@@ -1,6 +1,7 @@
 # Transport Layer Security (TLS) Resumption across Server Names
 
-This is the working area for the individual Internet-Draft, "Transport Layer Security (TLS) Resumption across Server Names".
+This is the working area for the TLS Working Group Internet-Draft, "Transport
+Layer Security (TLS) Resumption across Server Names".
 
 * [Editor's Copy](https://vasilvv.github.io/tls-cross-sni-resumption/#go.draft-vvv-tls-cross-sni-resumption.html)
 * [Individual Draft](https://tools.ietf.org/html/draft-vvv-tls-cross-sni-resumption)

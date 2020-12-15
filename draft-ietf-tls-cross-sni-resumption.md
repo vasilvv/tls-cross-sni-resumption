@@ -1,7 +1,7 @@
 ---
 title: Transport Layer Security (TLS) Resumption across Server Names
 abbrev: TLS Cross-SNI Resumption
-docname: draft-vvv-tls-cross-sni-resumption
+docname: draft-ietf-tls-cross-sni-resumption
 category: std
 
 ipr: trust200902
