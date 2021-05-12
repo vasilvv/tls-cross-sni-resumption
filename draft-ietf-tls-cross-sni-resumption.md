@@ -90,19 +90,20 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 document are to be interpreted as described in BCP 14 {{RFC2119}} {{!RFC8174}}
 when, and only when, they appear in all capitals, as shown here.
 
-The Extension
+The Flag
 =============
 
-The server MAY send a resumption_across_names(TBD) extension in a
-NewSessionTicket message.  That extension SHALL have an empty body.  If the
-extension is sent, it indicates that the client MAY use the ticket for any SNI
-value for which the certificate presented by the server is valid.  The server
-MUST handle the ticket correctly by either resuming and using a new SNI provided
-by the client, or by ignoring the ticket.
+Resumption across server names is negotiated using the TLS flags extension
+{{!I-D.draft-ietf-tls-tlsflags}}.  The server MAY send a
+resumption_across_names(8) flag in a NewSessionTicket message.  If the flag is
+sent, it indicates that the client MAY use the ticket for any SNI value for
+which the certificate presented by the server is valid.  The server MUST handle
+the ticket correctly by either resuming and using a new SNI provided by the
+client, or by ignoring the ticket.
 
-The server MAY send the extension if it reasonably believes that any server for
-any identity presented in its certificate would be capable of accepting that
-ticket.  The server SHOULD NOT send the extension otherwise, since, if the client
+The server MAY send the flag if it reasonably believes that any server for any
+identity presented in its certificate would be capable of accepting that
+ticket.  The server SHOULD NOT send the flag otherwise, since, if the client
 follows the single-use ticket policy recommended by [RFC8446], sending the
 ticket results in it being no longer usable regardless of whether resumption
 has succeeded.
@@ -141,16 +142,16 @@ example, the Web use case uses network partition keys to separate cache lookups
 IANA Considerations
 ===================
 
-IANA (will add/has added) the following entry to the "TLS ExtensionType Values"
+IANA (will add/has added) the following entry to the "TLS Flags"
 table of the "Transport Layer Security (TLS) Extensions" registry:
 
   Value
-  : TBD
+  : 0x8
 
-  Extension Name
+  Flag Name
   : resumption_across_names
 
-  TLS 1.3
+  Message
   : NST
 
   Recommended
