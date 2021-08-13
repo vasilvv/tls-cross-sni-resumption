@@ -113,8 +113,8 @@ Security Considerations
 
 This document does not alter any of the security requirements of [RFC8446], but
 merely lifts a performance-motivated "SHOULD NOT" recommendation from Section
-4.6.1.  Notably, it still relies on the server certificate being re-validated
-against the new SNI at the session resumption time.
+4.6.1.  Notably, it still relies on the client ensuring that the server
+certificate is valid for the new SNI at the time of session resumption.
 
 If a client certificate has been associated with the session, the client MUST
 use the same policy on whether to present said certificate to the server as if
