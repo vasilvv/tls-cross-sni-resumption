@@ -116,10 +116,12 @@ merely lifts a performance-motivated "SHOULD NOT" recommendation from Section
 4.6.1.  Notably, it still relies on the client ensuring that the server
 certificate is valid for the new SNI at the time of session resumption.
 
-If a client certificate has been associated with the session, the client MUST
-use the same policy on whether to present said certificate to the server as if
-it were a new TLS session.  For instance, if the client would show a
-certificate choice prompt for every individual domain it connects to, it MUST
+Cross-domain resumption implies that any certificate the client provides for
+one host would become available to the other hosts using the same server
+certificate.  Because of that, when performing cross-domain resumption, the
+client MUST use the same policy on whether to present said certificate to the
+server as if it were a new TLS session.  For instance, if the client would show
+a certificate choice prompt for every individual domain it connects to, it MUST
 show that prompt for the new host when performing cross-domain resumption.
 
 Cross-domain resumption, like other similar mechanisms (e.g. cross-domain HTTP
