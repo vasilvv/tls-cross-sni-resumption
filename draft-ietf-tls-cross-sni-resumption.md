@@ -198,7 +198,9 @@ This document incorporates ideas from that draft.
 This document has benefited from contributions and suggestions from
 David Benjamin,
 Nick Harper,
+Eric Rescorla,
 David Schinazi,
 Ryan Sleevi,
-Ian Swett
+Ian Swett,
+Martin Thomson,
 and many others.
