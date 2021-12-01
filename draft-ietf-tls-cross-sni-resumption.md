@@ -95,18 +95,12 @@ The Flag
 
 Resumption across server names is negotiated using the TLS flags extension
 {{!I-D.draft-ietf-tls-tlsflags}}.  The server MAY send a
-resumption_across_names(8) flag in a NewSessionTicket message.  If the flag is
-sent, it indicates that the client MAY use the ticket for any SNI value for
-which the certificate presented by the server is valid.  The server MUST handle
-the ticket correctly by either resuming and using a new SNI provided by the
-client, or by ignoring the ticket.
-
-The server MAY send the flag if it reasonably believes that any server for any
-identity presented in its certificate would be capable of accepting that
-ticket.  The server SHOULD NOT send the flag otherwise, since, if the client
-follows the single-use ticket policy recommended by [RFC8446], sending the
-ticket results in it being no longer usable regardless of whether resumption
-has succeeded.
+resumption_across_names(8) flag in a NewSessionTicket message.  The flag is an
+assertion by the server that any server for any identity presented in its
+certificate would be capable of accepting that ticket.  A client receiving a
+ticket with this flag MAY attempt resumption for any server name listed in the
+server certificate even if the new SNI value does not match the one used in the
+original session.
 
 Security Considerations
 =======================
@@ -115,6 +109,13 @@ This document does not alter any of the security requirements of [RFC8446], but
 merely lifts a performance-motivated "SHOULD NOT" recommendation from Section
 4.6.1.  Notably, it still relies on the client ensuring that the server
 certificate is valid for the new SNI at the time of session resumption.
+
+If the origianl server's assertion regarding supporting cross-name resumption
+turns out to be incorrect, the server receiving a misdirected ticket
+will not be able to decrypt it, and will therefore reject it.  This is secure,
+as session resumption may be safely rejected for any reason; however, such
+misconfiguration will waste tickets stored in the client's cache, as TLS
+tickets may be single-use.
 
 Cross-domain resumption implies that any certificate the client provides for
 one host would become available to the other hosts using the same server
