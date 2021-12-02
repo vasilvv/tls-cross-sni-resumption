@@ -4,8 +4,8 @@
 
 TLS Working Group                                            V. Vasiliev
 Internet-Draft                                                    Google
-Intended status: Standards Track                         1 December 2021
-Expires: 4 June 2022
+Intended status: Standards Track                         2 December 2021
+Expires: 5 June 2022
 
 
      Transport Layer Security (TLS) Resumption across Server Names
@@ -46,7 +46,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 June 2022.
+   This Internet-Draft will expire on 5 June 2022.
 
 Copyright Notice
 
@@ -126,7 +126,7 @@ Table of Contents
    client ensuring that the server certificate is valid for the new SNI
    at the time of session resumption.
 
-   If the origianl server's assertion regarding supporting cross-name
+   If the original server's assertion regarding supporting cross-name
    resumption turns out to be incorrect, the server receiving a
    misdirected ticket will not be able to decrypt it, and will therefore
    reject it.  This is secure, as session resumption may be safely
