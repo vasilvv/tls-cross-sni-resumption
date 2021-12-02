@@ -108,8 +108,8 @@ Resumption across server names is negotiated using the TLS flags extension
 resumption_across_names(8) flag in a NewSessionTicket message; the flag is an
 assertion by the server that any server for any identity presented in its
 certificate would be capable of accepting that ticket.  A client receiving a
-ticket with this flag MAY attempt resumption for any server name listed in the
-server certificate even if the new SNI value does not match the one used in the
+ticket with this flag MAY attempt resumption for any server name corresponding to an identity in the
+server certificate even if the new server name value does not match the one used in the
 original session.  The flag MUST NOT be used in TLS versions before 1.3.
 
 Security Considerations
@@ -128,12 +128,12 @@ misconfiguration will waste tickets stored in the client's cache, as TLS
 tickets may be single-use.
 
 When providing the SNI value to the application, TLS 1.3 requires the value
-from the most recent ClientHello to be used ([RFC8446], Section 4.6.1).  If the
+from the most recent ClientHello to be used ({{RFC8446, Section 4.6.1}}).  If the
 server TLS implementation violates that requirement and instead uses the legacy
 behavior of reporting the SNI value of the original session, this can lead to a
 confusion attack where the client and the server disagree on the server name
-being used (similar to the attacks described in [DB15]).  It is thus crucial
-for the implementers to ensure that this aspect of SNI processing is handled
+being used (similar to the attacks described in {{DB15}}).  It is thus crucial
+for implementers to ensure that this aspect of SNI processing is handled
 correctly before enabling cross-name resumption.
 
 Cross-domain resumption implies that any certificate the client provides for
