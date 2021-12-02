@@ -120,7 +120,7 @@ merely lifts a performance-motivated "SHOULD NOT" recommendation from Section
 4.6.1.  Notably, it still relies on the client ensuring that the server
 certificate is valid for the new SNI at the time of session resumption.
 
-If the origianl server's assertion regarding supporting cross-name resumption
+If the original server's assertion regarding supporting cross-name resumption
 turns out to be incorrect, the server receiving a misdirected ticket
 will not be able to decrypt it, and will therefore reject it.  This is secure,
 as session resumption may be safely rejected for any reason; however, such
