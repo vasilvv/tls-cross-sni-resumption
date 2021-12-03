@@ -108,9 +108,12 @@ Resumption across server names is negotiated using the TLS flags extension
 resumption_across_names(8) flag in a NewSessionTicket message; the flag is an
 assertion by the server that any server for any identity presented in its
 certificate would be capable of accepting that ticket.  A client receiving a
-ticket with this flag MAY attempt resumption for any server name corresponding to an identity in the
-server certificate even if the new server name value does not match the one used in the
-original session.  The flag MUST NOT be used in TLS versions before 1.3.
+ticket with this flag MAY attempt resumption for any server name corresponding
+to an identity in the server certificate even if the new server name value does
+not match the one used in the original session; note that this requires the
+client to retain the list of the names specified in the original server
+certificate.  The flag cannot be used in TLS versions before 1.3, as the
+NewSessionTicket message does not exist in those versions.
 
 Security Considerations
 =======================
@@ -122,19 +125,19 @@ certificate is valid for the new SNI at the time of session resumption.
 
 If the original server's assertion regarding supporting cross-name resumption
 turns out to be incorrect, a different server that receives a misdirected ticket
-will not be able to decrypt it and will therefore be unable to resume.  This is secure,
-as session resumption may be safely rejected for any reason; however, such
-misconfiguration will waste tickets stored in the client's cache, as TLS
-tickets may be single-use.
+will not be able to decrypt it and will therefore be unable to resume.  The
+protocol will gracefully recover from such situations, as session resumption
+may be safely rejected for any reason.  However, such misconfiguration will
+waste tickets stored in the client's cache, as TLS tickets may be single-use,
+leading to a potential performance regression.
 
 When providing the SNI value to the application, TLS 1.3 requires the value
 from the most recent ClientHello to be used ({{RFC8446, Section 4.6.1}}).  If the
-server TLS implementation violates that requirement and instead uses the legacy
-behavior of reporting the SNI value of the original session, this can lead to a
-confusion attack where the client and the server disagree on the server name
-being used (similar to the attacks described in {{DB15}}).  It is thus crucial
-for implementers to ensure that this aspect of SNI processing is handled
-correctly before enabling cross-name resumption.
+server TLS implementation violates that requirement and instead reports the SNI
+value of the original session, this can lead to a confusion attack where the
+client and the server disagree on the server name being used (similar to the
+attacks described in {{DB15}}).  The implementers MUST ensure that this aspect
+of SNI processing is handled correctly before enabling cross-name resumption.
 
 Cross-domain resumption implies that any certificate the client provides for
 one host would become available to the other hosts using the same server
