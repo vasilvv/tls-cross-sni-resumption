@@ -121,8 +121,8 @@ merely lifts a performance-motivated "SHOULD NOT" recommendation from Section
 certificate is valid for the new SNI at the time of session resumption.
 
 If the original server's assertion regarding supporting cross-name resumption
-turns out to be incorrect, the server receiving a misdirected ticket
-will not be able to decrypt it, and will therefore reject it.  This is secure,
+turns out to be incorrect, a different server that receives a misdirected ticket
+will not be able to decrypt it and will therefore be unable to resume.  This is secure,
 as session resumption may be safely rejected for any reason; however, such
 misconfiguration will waste tickets stored in the client's cache, as TLS
 tickets may be single-use.
