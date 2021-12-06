@@ -199,6 +199,7 @@ Erik Sy has previously proposed a similar mechanism for TLS,
 This document incorporates ideas from that draft.
 
 This document has benefited from contributions and suggestions from
+Carrick Bartle,
 David Benjamin,
 Nick Harper,
 Eric Rescorla,
@@ -206,4 +207,5 @@ David Schinazi,
 Ryan Sleevi,
 Ian Swett,
 Martin Thomson,
+Christopher Wood,
 and many others.
