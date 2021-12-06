@@ -240,8 +240,9 @@ Acknowledgments
    draft.
 
    This document has benefited from contributions and suggestions from
-   David Benjamin, Nick Harper, Eric Rescorla, David Schinazi, Ryan
-   Sleevi, Ian Swett, Martin Thomson, and many others.
+   Carrick Bartle, David Benjamin, Nick Harper, Eric Rescorla, David
+   Schinazi, Ryan Sleevi, Ian Swett, Martin Thomson, Christopher Wood,
+   and many others.
 
 Author's Address
 
